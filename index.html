@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Growlauncher</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+        url("https://cdn.discordapp.com/attachments/1439458431881973810/1456654384552476702/IMG_20251208_133531.png?ex=6959269c&is=6957d51c&hm=65db298f7d3c5086a94ddb64b254041274c7178e7d511f6c64535723b2b4caa9&");
+    background-size: cover;
+    background-position: center;
+    color: #dbdee1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app {
+    width: 800px;
+    max-width: 95%;
+    background-color: rgba(43,45,49,.92);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(0,0,0,.6);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: linear-gradient(90deg, #1e1f22, #24252a);
+}
+
+.profile-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar-wrapper {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    padding: 3px;
+    background: radial-gradient(circle, #8b5cf6, transparent 65%);
+    box-shadow: 0 0 10px rgba(139,92,246,.45);
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.username {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* ===== DISCORD BUTTON ===== */
+.discord-btn {
+    background-color: #3a3c43;
+    color: #cfd2da;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    text-decoration: none;
+    transition: background .2s;
+}
+
+.discord-btn:hover {
+    background-color: #4a4d55;
+}
+
+/* ===== CONTENT ===== */
+.content {
+    padding: 15px;
+}
+
+.file-item {
+    background-color: #1e1f22;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-info {
+    max-width: 75%;
+}
+
+.file-name {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    word-break: break-word;
+}
+
+.file-desc {
+    font-size: 13px;
+    color: #b5bac1;
+    margin-bottom: 6px;
+}
+
+.file-downloads {
+    font-size: 12px;
+    color: #8b949e;
+}
+
+/* ===== DOWNLOAD ===== */
+.download-btn {
+    background-color: #5865f2;
+    color: white;
+    padding: 7px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.download-btn:hover {
+    background-color: #4752c4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="profile">
+        <div class="profile-left">
+            <div class="avatar-wrapper">
+                <img class="avatar"
+                     src="https://cdn.discordapp.com/attachments/1439458431881973810/1456654384552476702/IMG_20251208_133531.png?ex=6959269c&is=6957d51c&hm=65db298f7d3c5086a94ddb64b254041274c7178e7d511f6c64535723b2b4caa9&">
+            </div>
+            <div class="username">Dayy's</div>
+        </div>
+        
+        <a class="discord-btn" href="https://discord.gg/UpPJdb74vV" target="_blank">
+            Discord
+        </a>
+    </div>
+    
+    <div class="content" id="fileList"></div>
+
+</div>
+
+<script>
+  
+const files = [
+    {
+        name: "Growlauncher v6.1.41",
+        desc: "Support Growtopia Apk Versi 5.34+ ",
+        downloads: "2.000",
+        link: "https://cdn.discordapp.com/attachments/901662125091606598/1439100867503456396/GrowLauncher_v6.1.41.apk?ex=695892a0&is=69574120&hm=5a6bba728db7b89ff8b823a28e79bacb2c315329694b7a63f450cd1686b314d7&"
+    },
+    {
+        name: "Growlauncher v6.1.45",
+        desc: "Support Growtopia Apk Versi 5.39+",
+        downloads: "1.000",
+        link: "https://cdn.discordapp.com/attachments/901662125091606598/1451194928775303218/GrowLauncher_v6.1.45.apk?ex=69591098&is=6957bf18&hm=701ef42338d1f71d929087618a40a94210f9b1660d5255aa2b8a2623f8181473&"
+    }
+];
+
+const fileList = document.getElementById("fileList");
+
+files.forEach(file => {
+    const item = document.createElement("div");
+    item.className = "file-item";
+
+    item.innerHTML = `
+        <div class="file-info">
+            <div class="file-name">${file.name}</div>
+            <div class="file-desc">${file.desc}</div>
+            <div class="file-downloads">${file.downloads} downloads</div>
+        </div>
+        <a class="download-btn" href="${file.link}" target="_blank">Download</a>
+    `;
+
+    fileList.appendChild(item);
+});
+</script>
+
+</body>
+</html>
